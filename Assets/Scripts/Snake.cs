@@ -1,94 +1,104 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    Rigidbody _rigidBody;
-    private Vector3 _direction = Vector3.zero;
-    private List<Transform> segments;
+    private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
+    public Vector3 direction = Vector3.zero;
+    private Vector3 input;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _rigidBody = GetComponent<Rigidbody>();
-        Debug.Log("Snake.Start");
-        segments = new List<Transform>();
-        segments.Add(this.transform);
+        ResetState();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        for (int i = segments.Count - 1; i > 0; i--)
+        // Only allow turning up or down while moving in the x-axis
+        if (direction.x != 0f)
         {
-            segments[i].position = segments[i - 1].position;
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                input = Vector3.forward;
+            }
+            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                input = Vector3.back;
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.W))
+        // Only allow turning left or right while moving in the y-axis
+        else if (direction.z != 0f)
         {
-            _direction = Vector3.forward;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            _direction = Vector3.left;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            _direction = Vector3.back;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            _direction = Vector3.right;
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                input = Vector3.right;
+            }
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                input = Vector3.left;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        transform.position = new Vector3(
-        Mathf.Round(this.transform.position.x) + _direction.x,
-        0.0f,
-        Mathf.Round(this.transform.position.z) + _direction.z
-        );
+        // Set the new direction based on the input
+        if (input != Vector3.zero)
+        {
+            direction = input;
+        }
+
+        // Set each segment's position to be the same as the one it follows. We
+        // must do this in reverse order so the position is set to the previous
+        // position, otherwise they will all be stacked on top of each other.
+        for (int i = segments.Count - 1; i > 0; i--)
+        {
+            segments[i].position = segments[i - 1].position;
+        }
+
+        // Move the snake in the direction it is facing
+        // Round the values to ensure it aligns to the grid
+        float x = Mathf.Round(transform.position.x) + direction.x;
+        float z = Mathf.Round(transform.position.z) + direction.z;
+
+        transform.position = new Vector3(x,0.0f, z);
     }
 
-    private void Reset()
+    public void Grow()
     {
+        Transform segment = Instantiate(segmentPrefab);
+        segment.position = segments[segments.Count - 1].position;
+        segments.Add(segment);
+    }
+
+    public void ResetState()
+    {
+        direction = Vector3.right;
+        transform.position = Vector3.zero;
+
+        // Start at 1 to skip destroying the head
         for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);
         }
+
+        // Clear the list but add back this as the head
         segments.Clear();
-        segments.Add(this.transform);
-
-        this.transform.position = Vector3.zero;
+        segments.Add(transform);
     }
-
+       
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Food")
+        if (other.gameObject.CompareTag("Food"))
         {
             Grow();
         }
-
-        else if (other.tag == "Collider")
+        else if (other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Player"))
         {
-            Reset();
+            ResetState();
         }
-
-        if (other.tag == "Segment")
-        {
-
-        }
-    }
-    private void Grow()
-    {
-        Transform segment = Instantiate(this.segmentPrefab);
-        segment.position = segments[segments.Count - 1].position;
-        segments.Add(segment);
     }
 }
-
-
