@@ -21,6 +21,7 @@ public class Player2 : MonoBehaviour
         // Only allow turning up or down while moving in the x-axis
         //if (direction.x != 0f)
         //{
+        PlayerStats.Instance.pressedKey();
         if (Input.GetKeyDown(KeyCode.W))
         {
             input = Vector3.forward;
@@ -99,8 +100,9 @@ public class Player2 : MonoBehaviour
             collectAudio.Play();
             Grow();
         }
-        else if (other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Player"))
+        else if (other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Player1"))
         {
+            PlayerStats.Instance.P2reset();
             ResetState();
         }
     }

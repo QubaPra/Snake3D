@@ -21,26 +21,27 @@ public class Player1 : MonoBehaviour
         // Only allow turning up or down while moving in the x-axis
         //if (direction.x != 0f)
         //{
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                input = Vector3.forward;
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                input = Vector3.back;
-            }
+        PlayerStats.Instance.pressedKey();
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            input = Vector3.forward;
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            input = Vector3.back;
+        }
         //}
         // Only allow turning left or right while moving in the y-axis
         //else if (direction.z != 0f)
         //{
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                input = Vector3.right;
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                input = Vector3.left;
-            }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            input = Vector3.right;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            input = Vector3.left;
+        }
         //}
     }
 
@@ -99,14 +100,15 @@ public class Player1 : MonoBehaviour
             collectAudio.Play();
             Grow();
         }
-        else if (other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Player"))
+        else if (other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Player2"))
         {
+            PlayerStats.Instance.P1reset();
             ResetState();
         }
     }
 
     void Awake()
     {
-        
+
     }
 }

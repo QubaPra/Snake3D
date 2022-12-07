@@ -9,6 +9,8 @@ TagManager:
   - Collider
   - Mushroom
   - spawnObject
+  - Player2
+  - Player1
   layers:
   - Default
   - TransparentFX
