@@ -10,7 +10,7 @@ public class Player2 : MonoBehaviour
     public Vector3 direction = Vector3.zero;
     private Vector3 input;
     public AudioSource collectAudio;
-
+    public AudioSource drinkAudio;
     private void Start()
     {
         ResetState();
@@ -104,6 +104,32 @@ public class Player2 : MonoBehaviour
         {
             PlayerStats.Instance.P2reset();
             ResetState();
+        }
+        else if (other.gameObject.CompareTag("Beer"))
+        {
+            drinkAudio.Play();
+            //piwo();
+        }
+    }
+
+    public void piwo()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            input = Vector3.back;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            input = Vector3.forward;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            input = Vector3.right;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            input = Vector3.left;
         }
     }
 

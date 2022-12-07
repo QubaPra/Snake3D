@@ -10,6 +10,7 @@ public class Player1 : MonoBehaviour
     public Vector3 direction = Vector3.zero;
     private Vector3 input;
     public AudioSource collectAudio;
+    public AudioSource drinkAudio;
 
     private void Start()
     {
@@ -105,6 +106,16 @@ public class Player1 : MonoBehaviour
             PlayerStats.Instance.P1reset();
             ResetState();
         }
+        else if(other.gameObject.CompareTag("Beer"))
+        {
+            drinkAudio.Play();
+            //piwo();
+        }
+    }
+
+    public void piwo()
+    {
+
     }
 
     void Awake()

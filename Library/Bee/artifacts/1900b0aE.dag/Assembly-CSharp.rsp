@@ -352,11 +352,13 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/Beer.cs"
 "Assets/Scripts/Food.cs"
 "Assets/Scripts/Mushroom.cs"
 "Assets/Scripts/Player1.cs"
 "Assets/Scripts/Player2.cs"
 "Assets/Scripts/PlayerStats.cs"
+"Assets/Scripts/Spawn.cs"
 -langversion:9.0
 
 /deterministic

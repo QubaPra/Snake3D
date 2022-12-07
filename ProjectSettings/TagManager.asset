@@ -11,6 +11,7 @@ TagManager:
   - spawnObject
   - Player2
   - Player1
+  - Beer
   layers:
   - Default
   - TransparentFX
