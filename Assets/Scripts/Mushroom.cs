@@ -25,6 +25,7 @@ public class Mushroom : MonoBehaviour
           SetRandomTime();
           
         }
+               
     }
 
     // Update is called once per frame
@@ -57,6 +58,6 @@ public class Mushroom : MonoBehaviour
 
     void SetRandomTime()
     {
-        spawnTime = Random.Range(minTime, maxTime);
+        spawnTime = Random.Range(minTime, maxTime);        
     }
 }

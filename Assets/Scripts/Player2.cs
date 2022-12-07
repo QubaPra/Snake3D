@@ -7,7 +7,7 @@ public class Player2 : MonoBehaviour
 {
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
-    public Vector3 direction = Vector3.zero;
+    public Vector3 direction = new Vector3(10f, 0.0f, 0f);
     private Vector3 input;
     public AudioSource collectAudio;
     public AudioSource drinkAudio;
@@ -19,31 +19,30 @@ public class Player2 : MonoBehaviour
     private void Update()
     {
         // Only allow turning up or down while moving in the x-axis
-        //if (direction.x != 0f)
-        //{
-        PlayerStats.Instance.pressedKey();
-        if (Input.GetKeyDown(KeyCode.W))
+        if (direction.x != 0f)
         {
-            input = Vector3.forward;
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                input = Vector3.forward;
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                input = Vector3.back;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            input = Vector3.back;
-        }
-        //}
         // Only allow turning left or right while moving in the y-axis
-        //else if (direction.z != 0f)
-        //{
-        if (Input.GetKeyDown(KeyCode.D))
+        else if (direction.z != 0f)
         {
-            input = Vector3.right;
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                input = Vector3.right;
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                input = Vector3.left;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            input = Vector3.left;
         }
-        //}
-    }
 
     private void FixedUpdate()
     {
@@ -78,8 +77,8 @@ public class Player2 : MonoBehaviour
 
     public void ResetState()
     {
-        direction = Vector3.right;
-        transform.position = Vector3.zero;
+        direction = Vector3.left;
+        transform.position = new Vector3(10f, 0.0f, 0f);
 
         // Start at 1 to skip destroying the head
         for (int i = 1; i < segments.Count; i++)

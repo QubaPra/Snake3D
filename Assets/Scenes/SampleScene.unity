@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17130648, g: 0.20451409, b: 0.24246168, a: 1}
+  m_IndirectSpecularColor: {r: 0.17130692, g: 0.20451482, b: 0.24246256, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2317,7 +2317,7 @@ Transform:
   m_Children:
   - {fileID: 661224279}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1724622258
 GameObject:
@@ -2584,7 +2584,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf8d9b1fc5579f24a8b984aff09d81c5, type: 2}
+  - {fileID: 2100000, guid: 55f68631e8423414d8a569ae9c5e759c, type: 2}
+  - {fileID: 2100000, guid: 39a181933fa27d445a3036637796e824, type: 2}
+  - {fileID: 2100000, guid: d820892400d252c46b776d54e5efe545, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2613,7 +2615,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792111223}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -472147775963580301, guid: 480f0400a8d7cfd4cbb685c0ceef54a7, type: 3}
 --- !u!4 &1792111227
 Transform:
   m_ObjectHideFlags: 0
@@ -2621,15 +2623,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792111223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2884994, y: 0, z: -0.92783725}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -3.2884994, y: -0.04112335, z: -0.888714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 262228227}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1792111228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,7 +2785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5311212756027765662, guid: 6e15f9d4bbeff174e8a4a1a671738572, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5311212756027765662, guid: 6e15f9d4bbeff174e8a4a1a671738572, type: 3}
       propertyPath: m_LocalPosition.x
