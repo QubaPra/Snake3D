@@ -21,7 +21,6 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        START.text = "press key to play";
         P1scoreText.text = P1score.ToString();
         P2scoreText.text = P2score.ToString();
         
