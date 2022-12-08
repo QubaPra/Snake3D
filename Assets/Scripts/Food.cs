@@ -32,7 +32,7 @@ public class Food : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player1" || other.tag =="Player2" || other.tag == "SinglePlayer")
+        if (other.tag == "Player1" || other.tag =="Player2")
         {
             RandomPosition();
         }

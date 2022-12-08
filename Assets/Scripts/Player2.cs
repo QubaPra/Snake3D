@@ -17,7 +17,7 @@ public class Player2 : MonoBehaviour
     private void Start()
     {
         ResetState();
-        ren= GetComponent<Renderer>();
+        ren = GetComponent<Renderer>();
         ren.enabled = true;
     }
 
@@ -77,7 +77,7 @@ public class Player2 : MonoBehaviour
     {
         if (wait > 3)
         {
-            
+
             // Set the new direction based on the input
             if (input != Vector3.zero)
             {
@@ -101,7 +101,7 @@ public class Player2 : MonoBehaviour
         }
         else
         {
-            if (wait>0&& wait < 0.5f)
+            if (wait > 0 && wait < 0.5f)
             {
                 ren.enabled = false;
             }
@@ -161,39 +161,17 @@ public class Player2 : MonoBehaviour
             PlayerStats.Instance.P2reset();
             ResetState();
         }
+        
         else if (other.gameObject.CompareTag("Beer"))
         {
-            drinkAudio.Play();
-            //piwo();
-        }
-        else if (other.gameObject.CompareTag("Mushroom"))
-        {
+            //drinkAudio.Play();
+            Destroy(other.gameObject);
             invert = true;
 
         }
     }
 
-    public void piwo()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            input = Vector3.back;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            input = Vector3.forward;
-        }
-        
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            input = Vector3.right;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            input = Vector3.left;
-        }
-    }
-
+    
     void Awake()
     {
 

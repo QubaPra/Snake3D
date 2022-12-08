@@ -19,61 +19,61 @@ public class Player1 : MonoBehaviour
         ResetState();
         ren = GetComponent<Renderer>();
         ren.enabled = true;
-
+        
 
     }
 
     private void Update()
-    {           
+    {
 
-            // Only allow turning up or down while moving in the x-axis
-            if (direction.x != 0f && invert == false)
+        // Only allow turning up or down while moving in the x-axis
+        if (direction.x != 0f && invert == false)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    input = Vector3.forward;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    input = Vector3.back;
-                }
+                input = Vector3.forward;
             }
-            // Only allow turning left or right while moving in the y-axis
-            else if (direction.z != 0f && invert == false)
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    input = Vector3.right;
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    input = Vector3.left;
-                }
+                input = Vector3.back;
             }
-            else if (direction.x != 0f && invert == true)
+        }
+        // Only allow turning left or right while moving in the y-axis
+        else if (direction.z != 0f && invert == false)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    input = Vector3.back;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    input = Vector3.forward;
-                }
+                input = Vector3.right;
             }
-            // Only allow turning left or right while moving in the y-axis
-            else if (direction.z != 0f && invert == true)
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    input = Vector3.left;
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    input = Vector3.right;
-                }
+                input = Vector3.left;
             }
-        
+        }
+        else if (direction.x != 0f && invert == true)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                input = Vector3.back;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                input = Vector3.forward;
+            }
+        }
+        // Only allow turning left or right while moving in the y-axis
+        else if (direction.z != 0f && invert == true)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                input = Vector3.left;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                input = Vector3.right;
+            }
+        }
+
     }
 
     private void FixedUpdate()
@@ -165,23 +165,26 @@ public class Player1 : MonoBehaviour
             PlayerStats.Instance.P1reset();
             ResetState();
         }
-        else if(other.gameObject.CompareTag("Beer"))
+        
+        else if (other.gameObject.CompareTag("Beer"))
         {
-            drinkAudio.Play();
-            //piwo();
-        }
-        else if (other.gameObject.CompareTag("Mushroom"))
-        {
+            //drinkAudio.Play();
+            Destroy(other.gameObject);
             invert = true;
 
         }
+
+        else if (other.gameObject.CompareTag("Mushroom"))
+        {
+            collectAudio.Play();
+            Destroy(other.gameObject);
+            
+
+        }
+
     }
 
-    public void piwo()
-    {
-
-    }
-
+   
     void Awake()
     {
 

@@ -20,7 +20,7 @@ public class Spawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player1" || other.tag == "Player2" || other.tag == "SinglePlayer")
+        if (other.tag == "Player1" || other.tag == "Player2")
         {
             drinkAudio.Play();
             Destroy(gameObject);
