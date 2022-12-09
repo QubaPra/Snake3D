@@ -10,7 +10,7 @@ public class Beer : MonoBehaviour
 
     //current time
     private float timer = 0.0f;
-    private float spawnTime = 10;
+    private float spawnTime = 20;
 
     // Start is called before the first frame update
     void Start()
