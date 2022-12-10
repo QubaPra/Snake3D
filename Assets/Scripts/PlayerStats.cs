@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
@@ -24,6 +25,14 @@ public class PlayerStats : MonoBehaviour
         P1scoreText.text = P1score.ToString();
         P2scoreText.text = P2score.ToString();
         
+
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
 
     }
 
@@ -55,5 +64,10 @@ public class PlayerStats : MonoBehaviour
     {
         P2score++;
         P2scoreText.text = P2score.ToString();
+    }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Player2
   - Player1
   - Beer
+  - Light
   layers:
   - Default
   - TransparentFX

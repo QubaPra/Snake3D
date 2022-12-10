@@ -14,11 +14,15 @@ public class SinglePlayerGame : MonoBehaviour
     public AudioSource drinkAudio;
     public bool invert = false;
     public float wait = 0.0f;
+    public float MushroomTimer = 0.0f;
+    public bool MushroomEffect = false;
+    LightAdjuster LightColor;
     private void Start()
     {
         ResetState();
         ren = GetComponent<Renderer>();
         ren.enabled = true;
+        LightColor = GameObject.FindGameObjectWithTag("Light").GetComponent<LightAdjuster>();
     }
 
     private void Update()
@@ -69,6 +73,18 @@ public class SinglePlayerGame : MonoBehaviour
             {
                 input = Vector3.right;
             }
+        }
+        if (MushroomEffect)
+        {
+            LightColor.ColorEffect();
+            MushroomTimer += Time.deltaTime;
+            if (MushroomTimer > 5)
+            {
+                MushroomTimer = 0.0f;
+                MushroomEffect = false;
+                LightColor.Normal();
+            }
+
         }
 
     }
@@ -146,6 +162,7 @@ public class SinglePlayerGame : MonoBehaviour
         segments.Add(transform);
         invert = false;
         wait = 0.0f;
+        MushroomEffect = false;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -168,12 +185,14 @@ public class SinglePlayerGame : MonoBehaviour
             invert = true;
 
         }
-        
+        else if (other.gameObject.CompareTag("Mushroom"))
+        {
+            collectAudio.Play();
+            Destroy(other.gameObject);
+            MushroomTimer = 0.0f;
+            MushroomEffect = true;
+        }
+
     }
 
-    
-    void Awake()
-    {
-
-    }
 }

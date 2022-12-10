@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
@@ -23,6 +24,14 @@ public class sINGLEPLAYERsTATS : MonoBehaviour
 
 
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+    }
 
     public void pressedKey()
     {
@@ -42,5 +51,10 @@ public class sINGLEPLAYERsTATS : MonoBehaviour
     {
         P1score++;
         P1scoreText.text = P1score.ToString();
+    }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

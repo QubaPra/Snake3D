@@ -11,6 +11,7 @@ public class LightAdjuster : MonoBehaviour
     // Color variables
     public bool changeColors = false;
     public float colorSpeed = 1.0f;
+    public Color normal;
     public Color color1;
     public Color color2;
     public Color color3;
@@ -30,7 +31,7 @@ public class LightAdjuster : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void ColorEffect()
     {
         myLight.intensity = 5.63f;
         if (changeColors)
@@ -54,5 +55,10 @@ public class LightAdjuster : MonoBehaviour
                 myLight.color = Color.Lerp(color4, color1, t);
             }
         }
+    }
+    public void Normal()
+    {
+        myLight.intensity = 1.63f;
+        myLight.color = normal;
     }
 }
