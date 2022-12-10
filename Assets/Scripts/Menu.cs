@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public AudioSource mySounds;
+    public AudioClip hoverSound;
+    public AudioClip clickSound;
     // Start is called before the first frame update
     public void Multiplayer()
     {
@@ -22,8 +23,16 @@ public class Menu : MonoBehaviour
         Debug.Log("Game is exiting");
         //Just to make sure its working
     }
+    public void HoverSound()
+    {
+        mySounds.PlayOneShot(hoverSound);
+    }
+    public void ClickSound()
+    {
+        mySounds.PlayOneShot(clickSound);
+    }
 
-    
+
 
 
 }

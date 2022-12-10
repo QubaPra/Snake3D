@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,9 +80,12 @@ public class SinglePlayerGame : MonoBehaviour
             {
                 MushroomTimer = 0.0f;
                 MushroomEffect = false;
-                LightColor.Normal();
             }
 
+        }
+        if (!MushroomEffect)
+        {
+            LightColor.Normal();
         }
 
     }
@@ -169,19 +170,19 @@ public class SinglePlayerGame : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Food"))
         {
-            sINGLEPLAYERsTATS.Instance.addPointP1();
+            SinglePlayerStats.Instance.addPointP1();
             collectAudio.Play();
             Grow();
         }
         else if (other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2") || other.gameObject.CompareTag("Player"))
         {
-            sINGLEPLAYERsTATS.Instance.P1reset();
+            SinglePlayerStats.Instance.P1reset();
             ResetState();
         }
         else if (other.gameObject.CompareTag("Beer"))
         {
             Destroy(other.gameObject);
-            drinkAudio.Play();            
+            drinkAudio.Play();
             invert = true;
 
         }

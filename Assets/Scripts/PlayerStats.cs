@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
 public class PlayerStats : MonoBehaviour
@@ -24,7 +21,7 @@ public class PlayerStats : MonoBehaviour
     {
         P1scoreText.text = P1score.ToString();
         P2scoreText.text = P2score.ToString();
-        
+
 
     }
     public void Update()

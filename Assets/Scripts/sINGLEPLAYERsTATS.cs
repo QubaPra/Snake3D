@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
-public class sINGLEPLAYERsTATS : MonoBehaviour
+public class SinglePlayerStats : MonoBehaviour
 {
-    public static sINGLEPLAYERsTATS Instance;
+    public static SinglePlayerStats Instance;
 
     public int P1score = 0;
     public Text P1scoreText;

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,12 +15,14 @@ public class Player2 : MonoBehaviour
     public float MushroomTimer = 0.0f;
     public bool MushroomEffect = false;
     LightAdjuster LightColor;
+    
     private void Start()
     {
         ResetState();
         ren = GetComponent<Renderer>();
         ren.enabled = true;
         LightColor = GameObject.FindGameObjectWithTag("Light").GetComponent<LightAdjuster>();
+        
     }
 
     private void Update()
@@ -82,9 +82,12 @@ public class Player2 : MonoBehaviour
             {
                 MushroomTimer = 0.0f;
                 MushroomEffect = false;
-                LightColor.Normal();
             }
 
+        }
+        if (!MushroomEffect)
+        {
+            LightColor.Normal();
         }
 
     }
@@ -110,8 +113,8 @@ public class Player2 : MonoBehaviour
 
             // Move the snake in the direction it is facing
             // Round the values to ensure it aligns to the grid
-            float x = Mathf.Round(transform.position.x) + direction.x;
-            float z = Mathf.Round(transform.position.z) + direction.z;
+            float x = Mathf.Round(transform.position.x) + (direction.x);
+            float z = Mathf.Round(transform.position.z) + (direction.z);
 
             transform.position = new Vector3(x, 0.0f, z);
         }
@@ -178,7 +181,7 @@ public class Player2 : MonoBehaviour
             PlayerStats.Instance.P2reset();
             ResetState();
         }
-        
+
         else if (other.gameObject.CompareTag("Beer"))
         {
             //drinkAudio.Play();

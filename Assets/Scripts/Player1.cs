@@ -86,11 +86,11 @@ public class Player1 : MonoBehaviour
             if (MushroomTimer>5)
             {
                 MushroomTimer = 0.0f;
-                MushroomEffect = false;
-                LightColor.Normal();
+                MushroomEffect = false;                
             }
 
         }
+        
         
 
     }
@@ -171,6 +171,7 @@ public class Player1 : MonoBehaviour
         invert = false;
         wait = 0.0f;
         MushroomEffect = false;
+       
     }
 
     public void OnTriggerEnter(Collider other)
